@@ -12,18 +12,18 @@ pipeline {
         }
         stage('login to dockerhub') {
             steps{
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | podman login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | podman login docker.io -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
             }
         }
         stage('push image') {
             steps{
-                sh 'podma, push docker.io/loikjohan/hello:v2'
+                sh 'podman push docker.io/loikjohan/hello:v2'
             }
         }
 }
 post {
         always {
-            sh 'podman logout'
+            sh 'podman logout docker.io'
         }
     }
 }
