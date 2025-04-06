@@ -7,7 +7,7 @@ pipeline {
 
         stage('Build docker image') {
             steps {  
-                sh 'podman build -t loikjohan/hello:v2 .'
+                sh 'podman build -t docker.io/loikjohan/hello:v2 .'
             }
         }
         stage('login to dockerhub') {
